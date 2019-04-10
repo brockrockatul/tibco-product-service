@@ -1,0 +1,58 @@
+---
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  annotations:
+    fabric8.io/metrics-path: dashboard/file/kubernetes-pods.json/?var-project=com.cts.sample.rest.products.application&var-version=1.0.0-SNAPSHOT
+  labels:
+    app: com.cts.sample.rest.products.application
+    provider: fabric8
+    version: 1.0.0-SNAPSHOT
+    group: com.tibco.bw
+  name: tibco-sample-rest
+spec:
+  replicas: 1
+  revisionHistoryLimit: 2
+  selector:
+    app: com.cts.sample.rest.products.application
+    provider: fabric8
+    group: com.tibco.bw
+  strategy:
+    rollingParams:
+      timeoutSeconds: 3600
+    type: Rolling
+  template:
+    metadata:
+      annotations:
+        fabric8.io/metrics-path: dashboard/file/kubernetes-pods.json/?var-project=com.cts.sample.rest.products.application&var-version=1.0.0-SNAPSHOT
+      labels:
+        container: tibco-sample-rest
+        project: tibco-sample-rest
+        app: com.cts.sample.rest.products.application
+        provider: fabric8
+        version: 1.0.0-SNAPSHOT
+        group: com.tibco.bw
+      name: tibco-sample-rest
+      namespace: tibcorest
+    spec:
+      containers:
+      - env:
+        - name: APP_CONFIG_PROFILE
+          value: docker
+        image: registry.starter-us-east-1.openshift.com/tibcorest/tibco-sample-rest
+        imagePullPolicy: Always
+        name: tibco-sample-rest
+        ports:
+        - containerPort: 8080
+          name: http
+  triggers:
+  - type: ConfigChange
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - tibco-sample-rest
+      from:
+        kind: ImageStreamTag
+        name: tibco-sample-rest:latest
+        namespace: tibcorest
+    type: ImageChange

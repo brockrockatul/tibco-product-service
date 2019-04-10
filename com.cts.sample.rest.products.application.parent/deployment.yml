@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: tibco-sample-rest
+  labels:
+    app: tibco-sample-rest
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: tibco-sample-rest
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: tibco-sample-rest
+spec:
+  replicas: 1
+  selector:
+    app: tibco-sample-rest
+  template:
+    metadata:
+      name: tibco-sample-rest
+      labels:
+        app: tibco-sample-rest
+    spec:
+      containers:
+        - name: tibco-sample-rest
+          image:  registry.starter-us-east-1.openshift.com/bwce/tibco-sample-rest
+          imagePullPolicy: Always
+          env:
+          - name: BW_LOGLEVEL
+            value: "ERROR"
+          - name: BW_PROFILE
+            value: docker
+          ports:
+            - containerPort: 8080

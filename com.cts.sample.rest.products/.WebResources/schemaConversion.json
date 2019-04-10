@@ -1,0 +1,5 @@
+{"records": [{
+    "jsonSchemaLocation": "/com.cts.sample.rest.products/Service Descriptors/com.cts.sample.rest.products.ProductManagement-Product.json",
+    "conversionType": "linked",
+    "xsdSchemaTargetNamespace": "http://www.example.org/Product"
+}]}

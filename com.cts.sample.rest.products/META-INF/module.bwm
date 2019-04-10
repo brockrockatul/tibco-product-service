@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_0v8OQFhBEemcx5zn_8zD7w" targetNamespace="http://tns.tibco.com/bw/composite/com.cts.sample.rest.products" name="com.cts.sample.rest.products" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_RK-5QFhHEemcx5zn_8zD7w" name="cts-addproduct" promote="ComponentProductManagement/cts-addproduct">
+    <sca:interface.wsdl xmi:id="_RUfakFhHEemcx5zn_8zD7w" interface="http://xmlns.example.com/20190406132900PLT#wsdl.interface(cts-addproduct)" scaext:wsdlLocation="../Processes/com/cts/sample/rest/products/ProductManagement.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_RVybEFhHEemcx5zn_8zD7w" name="RestService" path="/cts/addproduct" docBasePath="http://localhost:7777/com.cts.sample.rest.products" docResourcePath="Product" basePath="/" connector="com.cts.sample.rest.products.AddProduct" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/com.cts.sample.rest.products.ProductManagement-AddProduct.json" policySets="com.cts.sample.rest.products.BasicAuthentication" scaext:policySetLocations="BWRestHttpServiceBinding">
+      <operation xmi:id="_RV8MEFhHEemcx5zn_8zD7w" operationName="post" nickname="post-cts-addproduct" httpMethod="POST" responseStyle="element" requestStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_RZt40FhHEemcx5zn_8zD7w"/>
+      <advancedConfig xmi:id="_RV4hsFhHEemcx5zn_8zD7w" blockingQueueSize="2147483647"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_RV8MEVhHEemcx5zn_8zD7w" bindingName="RestService"/>
+  </sca:service>
+  <sca:service xmi:id="_4HETYFhHEemcx5zn_8zD7w" name="cts-viewProduct" promote="ComponentProductManagement/cts-viewProduct">
+    <sca:interface.wsdl xmi:id="_4HETZFhHEemcx5zn_8zD7w" interface="http://xmlns.example.com/20190406132900PLT#wsdl.interface(cts-viewProduct)" scaext:wsdlLocation="../Processes/com/cts/sample/rest/products/ProductManagement.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_4HFhgFhHEemcx5zn_8zD7w" name="RestService1" path="/cts/viewProduct/{id}" docBasePath="http://localhost:7777/com.cts.sample.rest.products" docResourcePath="Product" basePath="/" connector="com.cts.sample.rest.products.AddProduct" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/com.cts.sample.rest.products.ProductManagement-Product.json">
+      <operation xmi:id="_4HGIkFhHEemcx5zn_8zD7w" operationName="get" nickname="get-cts-viewProduct" httpMethod="GET" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_4HH9wFhHEemcx5zn_8zD7w">
+        <parameterMapping xmi:id="_4HJL4FhHEemcx5zn_8zD7w" parameterName="id" parameterType="Path" required="true"/>
+      </parameters>
+      <advancedConfig xmi:id="_4HFhgVhHEemcx5zn_8zD7w" blockingQueueSize="2147483647"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_4HGIkVhHEemcx5zn_8zD7w" bindingName="RestService1"/>
+  </sca:service>
+  <sca:service xmi:id="_6jJM4lhKEemcx5zn_8zD7w" name="cts-viewProduct1" promote="ComponentProductManagement/cts-viewProduct1">
+    <sca:interface.wsdl xmi:id="_6jJz8VhKEemcx5zn_8zD7w" interface="http://xmlns.example.com/20190406132900PLT#wsdl.interface(cts-viewProduct1)" scaext:wsdlLocation="../Processes/com/cts/sample/rest/products/ProductManagement.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_6jKbAFhKEemcx5zn_8zD7w" name="RestService2" path="/cts/viewProduct" docBasePath="http://localhost:7777/com.cts.sample.rest.products" docResourcePath="Product" basePath="/" connector="com.cts.sample.rest.products.AddProduct" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/com.cts.sample.rest.products.ProductManagement-Product.json">
+      <operation xmi:id="_6jLCEFhKEemcx5zn_8zD7w" operationName="get" nickname="get-cts-viewProduct" httpMethod="GET" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_6jLpIFhKEemcx5zn_8zD7w"/>
+      <advancedConfig xmi:id="_6jKbAVhKEemcx5zn_8zD7w" blockingQueueSize="2147483647"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_6jLCEVhKEemcx5zn_8zD7w" bindingName="RestService2"/>
+  </sca:service>
+  <sca:property xmi:id="_3wUPAFhBEemcx5zn_8zD7w" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_3wyJEFhBEemcx5zn_8zD7w" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_3w-WUFhBEemcx5zn_8zD7w" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_3xCnwFhBEemcx5zn_8zD7w" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_3xMYwFhBEemcx5zn_8zD7w" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_3xWJwFhBEemcx5zn_8zD7w" name="BW.CLOUD.PORT" type="XMLSchema:int" scalable="true"/>
+  <sca:property xmi:id="_3xhI4FhBEemcx5zn_8zD7w" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_Bz4sEFhKEemcx5zn_8zD7w" name="/AppParameter/GLB_SERVICE_NAME" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_C8segFhbEemcx5zn_8zD7w" name="/AppParameter/GLB_COMPANY_NAME" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_DLtK4FhbEemcx5zn_8zD7w" name="/AppParameter/GLB_COMPANY_EMAIL" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:component xmi:id="_2l_J4FhBEemcx5zn_8zD7w" name="ComponentProductManagement" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_2l_J4VhBEemcx5zn_8zD7w" processName="com.cts.sample.rest.products.ProductManagement"/>
+    <sca:service xmi:id="_RK5ZsFhHEemcx5zn_8zD7w" name="cts-addproduct">
+      <sca:interface.wsdl xmi:id="_RK7O4FhHEemcx5zn_8zD7w" interface="http://xmlns.example.com/20190406132900PLT#wsdl.interface(cts-addproduct)" scaext:wsdlLocation="../Processes/com/cts/sample/rest/products/ProductManagement.bwp"/>
+    </sca:service>
+    <sca:service xmi:id="_4HDsUFhHEemcx5zn_8zD7w" name="cts-viewProduct">
+      <sca:interface.wsdl xmi:id="_4HDsUVhHEemcx5zn_8zD7w" interface="http://xmlns.example.com/20190406132900PLT#wsdl.interface(cts-viewProduct)" scaext:wsdlLocation="../Processes/com/cts/sample/rest/products/ProductManagement.bwp"/>
+    </sca:service>
+    <sca:service xmi:id="_6jJM4FhKEemcx5zn_8zD7w" name="cts-viewProduct1">
+      <sca:interface.wsdl xmi:id="_6jJM4VhKEemcx5zn_8zD7w" interface="http://xmlns.example.com/20190406132900PLT#wsdl.interface(cts-viewProduct1)" scaext:wsdlLocation="../Processes/com/cts/sample/rest/products/ProductManagement.bwp"/>
+    </sca:service>
+  </sca:component>
+</sca:composite>

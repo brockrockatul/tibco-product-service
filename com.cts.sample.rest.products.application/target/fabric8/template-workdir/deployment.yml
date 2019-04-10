@@ -1,0 +1,27 @@
+metadata:
+  name: tibco-sample-rest
+kind: Deployment
+spec:
+  template:
+    metadata:
+      name: tibco-sample-rest
+      namespace: tibcorest
+      labels:
+        container: tibco-sample-rest
+        project: tibco-sample-rest
+    spec:
+      containers:
+      - image: registry.starter-us-east-1.openshift.com/tibcorest/tibco-sample-rest
+        imagePullPolicy: Always
+        name: tibco-sample-rest
+        env:
+        - name: APP_CONFIG_PROFILE
+          value: docker
+        ports:
+        - containerPort: 8080
+  replicas: 1
+  selector:
+    container: tibco-sample-rest
+    provider: fabric8
+    project: tibco-sample-rest
+    group: com.tibco.bw

@@ -1,0 +1,161 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Summary about the new REST service.",
+    "description" : "Summary about the new REST service."
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/cts/addproduct" : {
+      "post" : {
+        "summary" : "Add a Product",
+        "description" : "",
+        "operationId" : "post-cts-addproduct",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/Product"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a StatusElement to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/StatusElement"
+            }
+          }
+        }
+      }
+    },
+    "/cts/viewProduct/{id}" : {
+      "get" : {
+        "summary" : "View Product",
+        "description" : "",
+        "operationId" : "get-cts-viewProduct",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a Products to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/Products"
+            }
+          }
+        }
+      }
+    },
+    "/cts/viewProduct" : {
+      "get" : {
+        "summary" : "View All Product",
+        "description" : "",
+        "operationId" : "get-cts-viewProduct",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "a Products to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/Products"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Status" : {
+      "type" : "object",
+      "properties" : {
+        "msg" : {
+          "type" : "string"
+        },
+        "msgCode" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Products" : {
+      "type" : "object",
+      "properties" : {
+        "Product" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Product",
+            "uniqueItems" : false
+          }
+        }
+      }
+    },
+    "Header" : {
+      "type" : "object",
+      "properties" : {
+        "companyName" : {
+          "type" : "string"
+        },
+        "companyEmail" : {
+          "type" : "string"
+        }
+      }
+    },
+    "StatusElement" : {
+      "type" : "object",
+      "properties" : {
+        "Status" : {
+          "$ref" : "#/definitions/Status"
+        },
+        "Header" : {
+          "$ref" : "#/definitions/Header"
+        }
+      }
+    },
+    "Product" : {
+      "type" : "object",
+      "required" : [ "catagory", "price", "name", "manufacturer" ],
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "catagory" : {
+          "type" : "string"
+        },
+        "price" : {
+          "type" : "string"
+        },
+        "manufacturer" : {
+          "$ref" : "#/definitions/manufacturer"
+        }
+      }
+    },
+    "manufacturer" : {
+      "type" : "object",
+      "required" : [ "name", "id" ],
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

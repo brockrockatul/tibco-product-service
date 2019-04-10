@@ -1,0 +1,20 @@
+metadata:
+  name: tibco-sample-rest-service
+  namespace: tibcorest
+  labels:
+    container: tibco-sample-rest
+    provider: fabric8
+    project: tibco-sample-rest
+    group: com.tibco.bw
+kind: Service
+spec:
+  selector:
+    container: tibco-sample-rest
+    provider: fabric8
+    project: tibco-sample-rest
+    group: com.tibco.bw
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
